@@ -1,0 +1,223 @@
+akapong:Hello$ git diff
+akapong:Hello$ cd ..
+akapong:chap1$ cd ..
+akapong:HeadFirstJava$ git diff
+akapong:HeadFirstJava$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        chap1/
+
+nothing added to commit but untracked files present (use "git add" to track)
+akapong:HeadFirstJava$ git add -A
+akapong:HeadFirstJava$ git diff
+akapong:HeadFirstJava$ git diff
+diff --git a/chap1/Hello/bin/App.class b/chap1/Hello/bin/App.class
+index a228130..022db6b 100644
+Binary files a/chap1/Hello/bin/App.class and b/chap1/Hello/bin/App.class differ
+diff --git a/chap1/Hello/src/App.java b/chap1/Hello/src/App.java
+index 0a839f9..01a8c73 100644
+--- a/chap1/Hello/src/App.java
++++ b/chap1/Hello/src/App.java
+@@ -1,5 +1,6 @@
+ public class App {
+     public static void main(String[] args) throws Exception {
+         System.out.println("Hello, World!");
++        System.out.println("test");
+     }
+ }
+akapong:HeadFirstJava$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   chap1/Hello/.vscode/settings.json
+        new file:   chap1/Hello/README.md
+        new file:   chap1/Hello/bin/App.class
+        new file:   chap1/Hello/src/App.java
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   chap1/Hello/bin/App.class
+        modified:   chap1/Hello/src/App.java
+
+akapong:HeadFirstJava$ git add -A
+akapong:HeadFirstJava$ git diff
+akapong:HeadFirstJava$ 
+akapong:HeadFirstJava$ git commit -m "Add test message"
+[main 24be7b9] Add test message
+ 4 files changed, 28 insertions(+)
+ create mode 100644 chap1/Hello/.vscode/settings.json
+ create mode 100644 chap1/Hello/README.md
+ create mode 100644 chap1/Hello/bin/App.class
+ create mode 100644 chap1/Hello/src/App.java
+akapong:HeadFirstJava$ git diff
+akapong:HeadFirstJava$ git remote -v
+origin  https://github.com/akapong/HeadFirstJava.git (fetch)
+origin  https://github.com/akapong/HeadFirstJava.git (push)
+akapong:HeadFirstJava$ git branch -a
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+akapong:HeadFirstJava$ git pull origin master
+fatal: couldn't find remote ref master
+akapong:HeadFirstJava$ git pull origin main
+From https://github.com/akapong/HeadFirstJava
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+akapong:HeadFirstJava$ 
+akapong:HeadFirstJava$ git push origin master
+error: src refspec master does not match any
+error: failed to push some refs to 'https://github.com/akapong/HeadFirstJava.git'
+akapong:HeadFirstJava$ git push origin main
+Enumerating objects: 12, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (11/11), 1.57 KiB | 534.00 KiB/s, done.
+Total 11 (delta 0), reused 0 (delta 0)
+To https://github.com/akapong/HeadFirstJava.git
+   d14cc7f..24be7b9  main -> main
+akapong:HeadFirstJava$ git branch add-ruler
+akapong:HeadFirstJava$ git branch
+  add-ruler
+* main
+akapong:HeadFirstJava$ git branch -a
+  add-ruler
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+akapong:HeadFirstJava$ git checkout add-ruler
+Switched to branch 'add-ruler'
+akapong:HeadFirstJava$ git branch -a
+* add-ruler
+  main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+akapong:HeadFirstJava$ git status
+On branch add-ruler
+nothing to commit, working tree clean
+akapong:HeadFirstJava$ git status
+On branch add-ruler
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   chap1/Hello/bin/App.class
+        modified:   chap1/Hello/src/App.java
+
+no changes added to commit (use "git add" and/or "git commit -a")
+akapong:HeadFirstJava$ git add A
+fatal: pathspec 'A' did not match any files
+akapong:HeadFirstJava$ git add -A
+akapong:HeadFirstJava$ git status
+On branch add-ruler
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   chap1/Hello/bin/App.class
+        modified:   chap1/Hello/src/App.java
+
+akapong:HeadFirstJava$ git commit -m "Add ruler message"
+[add-ruler 9cc83c0] Add ruler message
+ 2 files changed, 1 insertion(+)
+akapong:HeadFirstJava$ git branch -a
+* add-ruler
+  main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+akapong:HeadFirstJava$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+akapong:HeadFirstJava$ 
+akapong:HeadFirstJava$ git checkout add-ruler
+Switched to branch 'add-ruler'
+akapong:HeadFirstJava$ git push --help
+akapong:HeadFirstJava$ 
+akapong:HeadFirstJava$ git push -u origin add-ruler
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (8/8), 736 bytes | 736.00 KiB/s, done.
+Total 8 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+remote: 
+remote: Create a pull request for 'add-ruler' on GitHub by visiting:
+remote:      https://github.com/akapong/HeadFirstJava/pull/new/add-ruler
+remote: 
+To https://github.com/akapong/HeadFirstJava.git
+ * [new branch]      add-ruler -> add-ruler
+Branch 'add-ruler' set up to track remote branch 'add-ruler' from 'origin'.
+akapong:HeadFirstJava$ git branch -a
+* add-ruler
+  main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/add-ruler
+  remotes/origin/main
+akapong:HeadFirstJava$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+akapong:HeadFirstJava$ git pull origin main
+From https://github.com/akapong/HeadFirstJava
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+akapong:HeadFirstJava$ git branch --merged
+* main
+akapong:HeadFirstJava$ git checkout add-ruler
+Switched to branch 'add-ruler'
+Your branch is up to date with 'origin/add-ruler'.
+akapong:HeadFirstJava$ git branch --merged
+* add-ruler
+  main
+akapong:HeadFirstJava$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+akapong:HeadFirstJava$ git branch --merged
+* main
+akapong:HeadFirstJava$ 
+akapong:HeadFirstJava$ git pull origin main
+From https://github.com/akapong/HeadFirstJava
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+akapong:HeadFirstJava$ 
+akapong:HeadFirstJava$ git branch --merged
+* main
+akapong:HeadFirstJava$ git merge add-ruler
+Updating 24be7b9..9cc83c0
+Fast-forward
+ chap1/Hello/bin/App.class | Bin 584 -> 607 bytes
+ chap1/Hello/src/App.java  |   1 +
+ 2 files changed, 1 insertion(+)
+akapong:HeadFirstJava$ git branch -a
+  add-ruler
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/add-ruler
+  remotes/origin/main
+akapong:HeadFirstJava$ git push origin main
+Total 0 (delta 0), reused 0 (delta 0)
+To https://github.com/akapong/HeadFirstJava.git
+   24be7b9..9cc83c0  main -> main
+akapong:HeadFirstJava$ git branch -d add-ruler
+Deleted branch add-ruler (was 9cc83c0).
+akapong:HeadFirstJava$ git brach -a
+git: 'brach' is not a git command. See 'git --help'.
+
+The most similar command is
+        branch
+akapong:HeadFirstJava$ git branch -a
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/add-ruler
+  remotes/origin/main
+akapong:HeadFirstJava$ git push --delete origin add-ruler
+To https://github.com/akapong/HeadFirstJava.git
+ - [deleted]         add-ruler
+akapong:HeadFirstJava$ git branch -a
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+akapong:HeadFirstJava$ 
